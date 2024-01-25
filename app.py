@@ -61,8 +61,8 @@ for sector in sectors:
     avg_score = sector_df[score_column].mean()
     std_dev = sector_df[score_column].std()
     num_respondents = len(sector_df)
-    score_data.append({'Bransch': sector, 'Medelvärde': avg_score, 
-                    'Standardavvikelse': std_dev, 'antal svar': num_respondents})
+    score_data.append({'Sector': sector, 'Average Score': avg_score, 
+                    'Standard Deviation': std_dev, 'Number of Respondents': num_respondents})
 
 # Create DataFrame from collected data and sort by average score
 score_table = pd.DataFrame(score_data).sort_values(by='Average Score', ascending=False)
@@ -81,8 +81,8 @@ for sector in sectors:
     for score in range(1, 7):
         score_count = len(sector_df[sector_df[score_column] == score])
         percentage = (score_count / total_count) * 100 if total_count > 0 else 0
-        stacked_data_percentage.append({'Bransch': sector, 'Score': score, 'Percentage': percentage})
-        stacked_data_count.append({'Bransch': sector, 'Score': score, 'Count': score_count})
+        stacked_data_percentage.append({'Sector': sector, 'Score': score, 'Percentage': percentage})
+        stacked_data_count.append({'Sector': sector, 'Score': score, 'Count': score_count})
 
 # Sorting sectors by total counts
 sorted_sectors = sorted(sector_counts, key=sector_counts.get, reverse=True)
